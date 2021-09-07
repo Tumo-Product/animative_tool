@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="66px" height="66px" viewBox="0 0 66 66" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>71F34C61-9D13-4F9A-B395-5366A94404ED</title>
+    <defs>
+        <filter id="filter-1">
+            <feColorMatrix in="SourceGraphic" type="matrix" values="0 0 0 0 0.952941 0 0 0 0 0.952941 0 0 0 0 0.952941 0 0 0 1.000000 0"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Interactive-Video" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="First-page" transform="translate(-926.000000, -507.000000)">
+            <g id="Play-button" transform="translate(926.000000, 507.000000)">
+                <path d="M37.2362737,23.3839448 L48.9851708,42.4759026 C49.2746218,42.9462605 49.1279678,43.5622073 48.6576099,43.8516583 C48.5000022,43.9486477 48.3185723,44 48.1335125,44 L24.6357183,44 C24.0834335,44 23.6357183,43.5522847 23.6357183,43 C23.6357183,42.8149402 23.6870706,42.6335103 23.78406,42.4759026 L35.5329571,23.3839448 C35.8224081,22.9135869 36.4383549,22.7669329 36.9087128,23.0563839 C37.0420333,23.1384272 37.1542304,23.2506243 37.2362737,23.3839448 Z" id="play" fill="#F3F3F3" transform="translate(36.384615, 33.000000) rotate(-270.000000) translate(-36.384615, -33.000000) "></path>
+                <g filter="url(#filter-1)" id="Status-bar-Copy-2">
+                    <g id="circle" stroke="#F3F3F3" stroke-width="3">
+                        <circle id="Oval" cx="33" cy="33" r="31.5"></circle>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
