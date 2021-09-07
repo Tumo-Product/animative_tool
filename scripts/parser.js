@@ -51,7 +51,7 @@ const vids = {
         },
         {
             id      : "01",
-            src     : "https://cdn.videvo.net/videvo_files/video/premium/getty_56/small_watermarked/istock-1003710026_preview.webm",
+            src     : "vids/RM_ANIM_TSHIRT.mp4",
             ref     : "0"
         },
         {
