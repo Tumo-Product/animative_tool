@@ -56,12 +56,12 @@ const vids = {
         },
         {
             id      : "02",
-            src     : "https://cdn.videvo.net/videvo_files/video/premium/getty_56/small_watermarked/istock-1003710026_preview.webm",
+            src     : "vids/RM_ANIM_BAG.mp4",
             ref     : "0"
         },
         {
             id      : "03",
-            src     : "https://cdn.videvo.net/videvo_files/video/premium/getty_56/small_watermarked/istock-1003710026_preview.webm",
+            src     : "vids/RM_ANIM_BOTTLE.mp4",
             ref     : "0"
         }
     ]
