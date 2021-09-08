@@ -19,6 +19,7 @@ const onPageLoad = async () => {
 
     await addVideos();
     view.current_video = `v_${$(".video_block").eq($(".video_block").length - 1).attr("id")}`;
+    $(`#${view.current_video}`).parent().css("z-index", 1);
 
     view.toggleLoader();
 }
