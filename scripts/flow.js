@@ -28,14 +28,14 @@ const onPlay = async () => {
     $(".controls").css({"opacity": 0, "pointer-events" : "none"});
     $(".blackout").css({"opacity": 0, "pointer-events" : "none"});
 
-    view.change_styles(0);
     player.controls.play();
 
     $("#play").attr("onclick", "player.controls.play()");
+    view.controlsVisible = false;
 
     let timer;
     $('body').mousemove(function() {
-        if (!view.hovering) {
+        if (!view.hovering && view.controlsVisible) {
             $(".controls").css("opacity", 1);
             clearTimeout(timer);
 
@@ -103,6 +103,10 @@ const hoverSwitch = async (i, type) => {
 }
 
 const handleVideo = async () => {
+    view.controlsVisible = false;
+    $(".controls").css({"opacity": 0, "pointer-events" : "none"});
+    $(".blackout").css({"opacity": 0, "pointer-events" : "none"});
+
     view.change_styles(0);
     if (tree[current_video].choices == undefined) {
         let oldVideo    = view.current_video;
@@ -120,6 +124,8 @@ const handleVideo = async () => {
 }
 
 const next_video = async (i) => {
+    view.controlsVisible = true;
+
     $(".controls").css({"opacity": 1, "pointer-events" : "all"});
     $(".blackout").css({"opacity": 1, "pointer-events" : "all"});
 

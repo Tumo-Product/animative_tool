@@ -3,6 +3,7 @@ const view = {
     mouseMoving     : false,
     loaderOpen      : true,
     hovering        : false,
+    controlsVisible : true,
 
     toggleLoader: () => {
         view.loaderOpen = !view.loaderOpen;
@@ -102,8 +103,6 @@ const view = {
             $(".blackout").css("opacity", "0.42");
             $("#play").show();
             $("#pause").hide();
-
-            $(".controls").css({"opacity": 1, "pointer-events" : "all"});
         }
     }
 }
