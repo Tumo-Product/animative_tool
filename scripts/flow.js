@@ -27,7 +27,25 @@ const onPageLoad = async () => {
 const onPlay = async () => {
     $(".controls").css({"opacity": 0, "pointer-events" : "none"});
     $(".blackout").css({"opacity": 0, "pointer-events" : "none"});
+
+    view.change_styles(0);
     player.controls.play();
+
+    $("#play").attr("onclick", "player.controls.play()");
+
+    let timer;
+    $('body').mousemove(function() {
+        if (!view.hovering) {
+            $(".controls").css("opacity", 1);
+            clearTimeout(timer);
+
+            timer = setTimeout(function(){
+                $(".controls").css("opacity", 0);
+            }, 2000);
+        } else {
+            clearTimeout(timer);
+        }
+    });
 }
 
 const addChoices = async () => {
@@ -84,13 +102,14 @@ const hoverSwitch = async (i, type) => {
     }
 }
 
-handleVideo = async () => {
+const handleVideo = async () => {
+    view.change_styles(0);
     if (tree[current_video].choices == undefined) {
         let oldVideo    = view.current_video;
         current_video   = tree[current_video].ref;
 
         view.current_video = `v_${current_video}`;
-        if ($("#"+view.current_video).length == 0) {
+        if ($(`#${view.current_video}`).length == 0) {
             view.current_video = `v_l_${current_video}`;
         }
         view.switchVideos($(`#${oldVideo}`).parent(), $(`#${current_video}`));
@@ -101,8 +120,12 @@ handleVideo = async () => {
 }
 
 const next_video = async (i) => {
+    $(".controls").css({"opacity": 1, "pointer-events" : "all"});
+    $(".blackout").css({"opacity": 1, "pointer-events" : "all"});
+
     player.controls.pause();
     player.controls.goToStart();
+    view.change_styles(0);
 
     hoverSwitch(i, "leaving");
     view.hide_question();

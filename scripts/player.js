@@ -6,6 +6,8 @@ const player = {
             } else {
                 document.getElementById(video).play();
             }
+
+            view.change_styles(0);
         },
     
         pause : (video) => {
@@ -14,6 +16,8 @@ const player = {
             } else {
                 document.getElementById(video).pause();
             }
+
+            view.change_styles(1);
         },
     
         rewind_video : (time) => {

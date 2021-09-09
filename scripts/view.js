@@ -33,7 +33,19 @@ const view = {
 
         if (currentTime >= duration) {
             handleVideo();
-            
+        }
+
+        if (currentTime > 5) {
+            $("#back img").show();
+        }
+        else if (currentTime < 5) {
+            $("#back img").hide();
+        }
+        if (currentTime < duration - 5) {
+            $("#front img").show();
+        }
+        else if (currentTime > duration - 5) {
+            $("#front img").hide();
         }
     },
     switchVideos: async (from, to) => {
@@ -79,5 +91,19 @@ const view = {
 				$(this).css("font-size", size - 1);
 			}
 		});
-	}
+	},
+    change_styles : (event) => {
+        if (event == 0){
+            $(".blackout").css("opacity", "0");
+            $("#play").hide();
+            $("#pause").show();
+        }
+        else {
+            $(".blackout").css("opacity", "0.42");
+            $("#play").show();
+            $("#pause").hide();
+
+            $(".controls").css({"opacity": 1, "pointer-events" : "all"});
+        }
+    }
 }

@@ -27,8 +27,17 @@
     <div id="choices" class="stickyChoices"></div>
     <div class="blackout"></div>
     <div class="controls">
+        <div class="control" id="back"  style="z-index: 2;">
+            <img onclick="player.controls.rewind_video(-10)" src="images/move_back.svg" alt="">
+        </div>
         <div class="control" id="play" onclick="onPlay()" style="z-index: 2;">
             <img src="images/play.svg" alt="">
+        </div>
+        <div class="control" id="pause" onclick="player.controls.pause()" style="z-index: 1;">
+            <img src="images/pause.svg" alt="">
+        </div>
+        <div class="control" id="front"  style="z-index: 1;">
+            <img onclick="player.controls.rewind_video(10)" src="images/move_forward.svg" alt="">
         </div>
     </div>
 
