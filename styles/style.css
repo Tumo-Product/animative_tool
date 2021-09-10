@@ -35,8 +35,8 @@ body {
 }
 
 .video_block{
-    width: 900px;
-    height: 600px;
+    width: 890px;
+    height: 500px;
     display: flex;
     justify-content: center;
     position: relative;
@@ -214,4 +214,5 @@ body {
 
 img {
     width: 100%;
+    filter: drop-shadow(3px 3px 3px rgba(0, 0, 0, 0.2));
 }

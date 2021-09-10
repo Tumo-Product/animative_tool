@@ -33,6 +33,14 @@ const onPlay = async () => {
     $("#play").attr("onclick", "player.controls.play()");
     view.controlsVisible = false;
 
+    $(".control").mouseenter(function() {
+        $(".controls").css("opacity", 1);
+        view.hovering = true;
+        console.log('hovering');
+    }).mouseleave(function() {
+        view.hovering = false;
+    });
+
     let timer;
     $('body').mousemove(function() {
         if (!view.hovering && view.controlsVisible) {
@@ -41,7 +49,7 @@ const onPlay = async () => {
 
             timer = setTimeout(function(){
                 $(".controls").css("opacity", 0);
-            }, 2000);
+            }, 1000);
         } else {
             clearTimeout(timer);
         }
