@@ -63,6 +63,8 @@ const view = {
         }
 
         $(`#c_${i}`).mouseenter(function() {
+            audio.currentTime = 0;
+            audio.play();
             hoverSwitch(i, "entering");
         }).mouseleave(function() {
             hoverSwitch(i, "leaving");

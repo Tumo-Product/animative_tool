@@ -3,6 +3,7 @@ let tree            = [];
 let tree_keys       = [];
 let hoverVids       = {};
 let current_video   = '0';
+let audio = new Audio("audio/Mouseover.wav");
 
 const timeout = (ms) => {
     return new Promise(resolve => setTimeout(resolve, ms));
