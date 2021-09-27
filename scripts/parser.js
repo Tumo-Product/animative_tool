@@ -18,28 +18,28 @@ const vids = {
                     ref  : "00",
                     hoverSrc: "vids/RM_INTRO_SNEAKER.mp4",
                     pos  : {
-                        x: 100, y: 250
+                        x: 100, y: 200
                     }
                 },
                 {
                     ref  : "01",
                     hoverSrc: "vids/RM_INTRO_TSHIRT.mp4",
                     pos  : {
-                        x: 261, y: 171
+                        x: 261, y: 121
                     }
                 },
                 {
                     ref  : "02",
                     hoverSrc: "vids/RM_INTRO_BAG.mp4",
                     pos  : {
-                        x: 494, y: 187
+                        x: 494, y: 137
                     }
                 },
                 {
                     ref  : "03",
                     hoverSrc: "vids/RM_INTRO_BOTTLE.mp4",
                     pos  : {
-                        x: 655, y: 264
+                        x: 655, y: 214
                     }
                 },
             ]
