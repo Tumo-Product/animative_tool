@@ -21,18 +21,30 @@ const view = {
 
         $("body").prepend(videoBlock);
 
+        if (id === "intro") {
+            $("#intro").css("z-index", 6);
+            $("#play").attr("onclick", "player.controls.play('v_intro')");
+        }
+
         if (id.charAt(0) != "l") {
-            document.getElementById(`v_${id}`).addEventListener('timeupdate', view.update);
+            document.getElementById(`v_${id}`).addEventListener('timeupdate', function() {view.update(id)});
         } else {
             $(`#v_${id}`).prop("loop", true);
         }
     },
-    update: () => {
+    update: (id) => {
         let element         = document.getElementById(view.current_video);
+        if (id === "intro") element = document.getElementById("v_intro");
+        if (element === null) return;
         let duration        = element.duration;
         let currentTime     = element.currentTime;
 
         if (currentTime >= duration) {
+            if (id == "intro") {
+                $("#intro").remove();
+                player.controls.play();
+                // return;
+            }
             handleVideo();
         }
 

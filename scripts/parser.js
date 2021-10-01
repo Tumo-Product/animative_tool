@@ -10,6 +10,9 @@ const parser = {
 
 const vids = {
     segments: [
+        // {
+        //     intro: "vids/Q1.mp4",
+        // },
         {
             id      : "0",
             loopSrc : "vids/RM_INTRO_IDLE.mp4",

@@ -5,6 +5,10 @@ const player = {
                 document.getElementById(view.current_video).play();
             } else {
                 document.getElementById(video).play();
+                if (video == "v_intro") {
+                    $(".controls").css({"opacity": 0, "pointer-events" : "none"});
+                    $(".blackout").css("opacity", 0);
+                }
             }
 
             view.change_styles(0);

@@ -13,21 +13,31 @@ const onPageLoad = async () => {
     videos = await parser.dataFetch();
     // videos = videos.data.data;
 
-    for (let i = 0; i < videos.segments.length; i++) {
-        tree[videos.segments[i].id] = { id: videos.segments[i].id, src : videos.segments[i].src, choices : videos.segments[i].choices, loopSrc: videos.segments[i].loopSrc, ref: videos.segments[i].ref };
-        tree_keys[i] = videos.segments[i].id;
+    let segments = videos.segments;
+    for (let i = 0; i < segments.length; i++) {
+        tree[segments[i].id] = { id: segments[i].id, src : segments[i].src, choices : segments[i].choices, loopSrc: segments[i].loopSrc, ref: segments[i].ref };
+        tree_keys[i] = segments[i].id;
     }
 
     await addVideos();
-    view.current_video = `v_${$(".video_block").eq($(".video_block").length - 1).attr("id")}`;
+    if ($(`#${current_video}`).length > 0) {
+        view.current_video = `v_${current_video}`;
+    } else if ($(`#l_${current_video}`).length > 0) {
+        view.current_video = `v_l_${current_video}`;
+    }
+    
     $(`#${view.current_video}`).parent().css("z-index", 1);
 
+    if (videos.segments[0].intro !== undefined) {
+        view.addVideo("intro", videos.segments[0].intro);
+    }
+    await timeout(1000);
     view.toggleLoader();
 }
 
 const onPlay = async () => {
     $(".controls").css({"opacity": 0, "pointer-events" : "none"});
-    $(".blackout").css({"opacity": 0, "pointer-events" : "none"});
+    $(".blackout").css("opacity", 0);
 
     player.controls.play();
 
@@ -37,7 +47,6 @@ const onPlay = async () => {
     $(".control").mouseenter(function() {
         $(".controls").css("opacity", 1);
         view.hovering = true;
-        console.log('hovering');
     }).mouseleave(function() {
         view.hovering = false;
     });
@@ -136,7 +145,7 @@ const next_video = async (i) => {
     view.controlsVisible = true;
 
     $(".controls").css({"opacity": 1, "pointer-events" : "all"});
-    $(".blackout").css({"opacity": 1, "pointer-events" : "all"});
+    $(".blackout").css("opacity", 1);
 
     player.controls.pause();
     player.controls.goToStart();
