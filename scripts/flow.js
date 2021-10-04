@@ -11,7 +11,8 @@ const timeout = (ms) => {
 
 const onPageLoad = async () => {
     videos = await parser.dataFetch();
-    videos = videos.data.data;
+    console.log(JSON.stringify(videos.segments));
+    // videos = videos.data.data;
 
     let segments = videos.segments;
     for (let i = 0; i < segments.length; i++) {
