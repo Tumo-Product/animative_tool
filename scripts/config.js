@@ -1,5 +1,5 @@
 axios.defaults.baseURL = "https://blackboxbasic.herokuapp.com/";
 
 const config = {
-    query_url: "interactive_video/getsetsone?_uid="
+    query_url: "animated_tool/getsetsone?_uid="
 }
