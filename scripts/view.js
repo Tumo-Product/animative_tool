@@ -65,10 +65,13 @@ const view = {
         from.css("z-index", 0);
         to.css("z-index", 1);
     },
-    addChoice: (i, pos) => {
+    addChoice: (i, pos, style) => {
         let choice = `<div id="c_${i}" class="choices" onclick="next_video(${i})"></div>`;
         
         $("#choices").append(choice);
+        if (style !== undefined) {
+            $(`#c_${i}`).attr("style", style);
+        }
         if (pos !== undefined) {
             $(".choices").eq(i).css("left", pos.x);
             $(".choices").eq(i).css("top",  pos.y);

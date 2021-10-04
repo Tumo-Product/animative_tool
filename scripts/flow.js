@@ -71,7 +71,7 @@ const addChoices = async () => {
 
     if (choices != undefined) {
         for (let i = 0; i < choices.length; i++) {
-            view.addChoice(i, choices[i].pos);
+            view.addChoice(i, choices[i].pos, choices[i].style);
         }
     }
 }
