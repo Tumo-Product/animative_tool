@@ -4,6 +4,7 @@ let tree_keys       = [];
 let hoverVids       = {};
 let current_video   = '0';
 let audio = new Audio("audio/Mouseover 2.wav");
+let timer = 0;
 
 const timeout = (ms) => {
     return new Promise(resolve => setTimeout(resolve, ms));
@@ -31,7 +32,30 @@ const onPageLoad = async () => {
     if (videos.segments[0].intro !== undefined) {
         view.addVideo("intro", videos.segments[0].intro);
     }
+
+    $(".control").mouseenter(function() {
+        $(".controls").css("opacity", 1);
+        view.hovering = true;
+    }).mouseleave(function() {
+        view.hovering = false;
+    });
+
+    $('body').mousemove(function() {
+        if ($(".controls").css("pointer-events") === "all") {
+            if (!view.hovering) {
+                $(".controls").css("opacity", 1);
+                clearTimeout(timer);
+
+                timer = setTimeout(function() {
+                    $(".controls").css("opacity", 0);
+                }, 2000);
+            } else {
+                clearTimeout(timer);
+            }
+        }
+    });
     await timeout(1000);
+
     view.toggleLoader();
 }
 
@@ -49,20 +73,6 @@ const onPlay = async () => {
         view.hovering = true;
     }).mouseleave(function() {
         view.hovering = false;
-    });
-
-    let timer;
-    $('body').mousemove(function() {
-        if (!view.hovering && view.controlsVisible) {
-            $(".controls").css("opacity", 1);
-            clearTimeout(timer);
-
-            timer = setTimeout(function(){
-                $(".controls").css("opacity", 0);
-            }, 1000);
-        } else {
-            clearTimeout(timer);
-        }
     });
 }
 
