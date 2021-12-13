@@ -12,6 +12,7 @@ const player = {
             }
 
             view.change_styles(0);
+            if (music.src !== "" && music.paused) music.play();
         },
     
         pause : (video) => {

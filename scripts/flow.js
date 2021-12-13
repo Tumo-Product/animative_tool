@@ -5,6 +5,7 @@ let hoverVids       = {};
 let current_video   = '0';
 let audio = new Audio("audio/Mouseover 2.wav");
 let timer = 0;
+let music;
 
 const timeout = (ms) => {
     return new Promise(resolve => setTimeout(resolve, ms));
@@ -13,6 +14,8 @@ const timeout = (ms) => {
 const onPageLoad = async () => {
     videos = await parser.dataFetch();
     videos = videos.data.data;
+    music = new Audio(videos.music);
+    music.loop = true;
 
     let segments = videos.segments;
     for (let i = 0; i < segments.length; i++) {
@@ -62,6 +65,7 @@ const onPageLoad = async () => {
 const onPlay = async () => {
     $(".controls").css({"opacity": 0, "pointer-events" : "none"});
     $(".blackout").css("opacity", 0);
+    if (music.src !== "" && music.paused) music.play();
 
     player.controls.play();
 
