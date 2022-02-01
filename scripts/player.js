@@ -4,6 +4,7 @@ const player = {
             if (video == undefined) {
                 document.getElementById(view.current_video).play();
             } else {
+                if (document.getElementById(video) === null) video = view.current_video;
                 document.getElementById(video).play();
                 if (video == "v_intro") {
                     $(".controls").css({"opacity": 0, "pointer-events" : "none"});
