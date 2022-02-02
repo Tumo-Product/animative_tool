@@ -14,7 +14,7 @@ const view = {
     addVideo: (id, src) => {
         let videoBlock = `
         <div id="${id}" class="video_block">
-            <video id="v_${id}" class="video">
+            <video preload="metadata" id="v_${id}" class="video">
                 <source src="${src}" type="video/mp4">
             </video>
         </div>`;

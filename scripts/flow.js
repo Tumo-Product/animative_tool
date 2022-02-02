@@ -16,6 +16,7 @@ const onPageLoad = async () => {
     videos = videos.data.data;
     music = new Audio(videos.music);
     music.loop = true;
+    audio.volume = 0.1;
 
     let segments = videos.segments;
     for (let i = 0; i < segments.length; i++) {
@@ -57,9 +58,30 @@ const onPageLoad = async () => {
             }
         }
     });
+    
+    loadVideos();
     await timeout(1000);
+}
 
-    view.toggleLoader();
+const loadVideos = () => {
+    let videoElements = $("video");
+    let videosLoaded = 0;
+    
+    videoElements.each(function(i) {
+        let video = $(this).get(0);
+        video.load();
+        
+        video.addEventListener('loadeddata', (e) => {
+            if(video.readyState >= 3) {
+                video.removeEventListener("loadeddata", (e) => {}, true);
+                videosLoaded++;
+                console.log("loaded");
+                if (videosLoaded == videoElements.length) {
+                    view.toggleLoader();
+                }
+            }
+         });
+    });
 }
 
 const onPlay = async () => {
