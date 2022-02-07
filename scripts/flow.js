@@ -58,6 +58,10 @@ const onPageLoad = async () => {
             }
         }
     });
+
+    $('body').mouseleave(function() {
+        $(".controls").css("opacity", 0);
+    });
     
     loadVideos();
     await timeout(1000);
