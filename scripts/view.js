@@ -65,19 +65,27 @@ const view = {
         from.css("z-index", 0);
         to.css("z-index", 1);
     },
-    addChoice: (i, pos, style) => {
-        let choice = `<div id="c_${i}" class="choices" onclick="next_video(${i})"></div>`;
+    addChoice: (i, pos, style, styles) => {
+        let choice = `<div class="c_${i} choices" onclick="next_video(${i})"></div>`;
         
-        $("#choices").append(choice);
+        if (styles !== undefined) {
+            for (let s = 0; s < styles.length; s++) {
+                $("#choices").append(choice);
+                $(`.c_${i}`).last().attr("style", styles[s]);
+            }
+        } else {
+            $("#choices").append(choice);
+        }
+
         if (style !== undefined) {
-            $(`#c_${i}`).attr("style", style);
+            $(`.c_${i}`).attr("style", style);
         }
         if (pos !== undefined) {
             $(".choices").eq(i).css("left", pos.x);
             $(".choices").eq(i).css("top",  pos.y);
         }
 
-        $(`#c_${i}`).mouseenter(function() {
+        $(`.c_${i}`).mouseenter(function() {
             audio.currentTime = 0;
             audio.play();
             hoverSwitch(i, "entering");
