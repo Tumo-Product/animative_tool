@@ -20,7 +20,7 @@ const onPageLoad = async () => {
 
     let segments = videos.segments;
     for (let i = 0; i < segments.length; i++) {
-        tree[segments[i].id] = { id: segments[i].id, src : segments[i].src, choices : segments[i].choices, loopSrc: segments[i].loopSrc, ref: segments[i].ref };
+        tree[segments[i].id] = { id: segments[i].id, src : segments[i].src, choices : segments[i].choices, loopSrc: segments[i].loopSrc, ref: segments[i].ref, volume: segments[i].volume };
         tree_keys[i] = segments[i].id;
     }
 
@@ -34,7 +34,8 @@ const onPageLoad = async () => {
     $(`#${view.current_video}`).parent().css("z-index", 1);
 
     if (videos.segments[0].intro !== undefined) {
-        view.addVideo("intro", videos.segments[0].intro);
+        console.log(videos.segments[0]);
+        view.addVideo("intro", videos.segments[0].intro, videos.segments[0].volume);
     }
 
     $(".control").mouseenter(function() {

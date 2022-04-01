@@ -11,7 +11,7 @@ const view = {
         if (view.loaderOpen)    $("#loadingScreen").show();
         else                    $("#loadingScreen").hide();
     },
-    addVideo: (id, src) => {
+    addVideo: (id, src, volume) => {
         let videoBlock = `
         <div id="${id}" class="video_block">
             <video preload="metadata" id="v_${id}" class="video">
@@ -30,6 +30,10 @@ const view = {
             document.getElementById(`v_${id}`).addEventListener('timeupdate', function() {view.update(id)});
         } else {
             $(`#v_${id}`).prop("loop", true);
+        }
+
+        if (volume !== undefined) {
+            document.getElementById(`v_${id}`).volume = volume;
         }
     },
     update: (id) => {
